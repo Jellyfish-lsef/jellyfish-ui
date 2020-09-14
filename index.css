@@ -22,21 +22,19 @@
 /* Only change anything below this line if you know what you're doing */
 @keyframes gay {
     from {
-        --accent-bright: hsl(0,87%,48%);
-        --accent-dark: hsl(0,94%,48%);
-        --accent-verydark: hsl(0,88%,33%);
+        filter: hue-rotate(0deg) saturate(120%);
     }
     to {
-        --accent-bright: hsl(359,87%,48%);
-        --accent-dark: hsl(359,94%,48%);
-        --accent-verydark: hsl(359,88%,33%);
+        filter: hue-rotate(360deg) saturate(120%);
     }
 }
 
-.gay, .gay *, .gay > * {
+.gay{
     animation-name: gay;
     animation-duration: 3.6s;
+    animation-direction: normal;
     animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
 *, *::after, *::before {
@@ -59,6 +57,7 @@ body {
     color: var(--text-main);
     font-family: var(--font-medium);
     user-select: none;
+    overflow: hidden;
 }
 
 

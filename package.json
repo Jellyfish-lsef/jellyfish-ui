@@ -1,0 +1,23 @@
+{
+  "name": "jellyfish-ui",
+  "version": "2.0.0",
+  "description": "Jellyfish UI",
+  "main": "client.js",
+  "dependencies": {
+    "monaco-editor": "^0.20.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jellyfish-lsef/jellyfish-ui.git"
+  },
+  "author": "theLMGN",
+  "license": "SEE LICENCE IN LICENCE",
+  "bugs": {
+    "url": "https://github.com/Jellyfish-lsef/jellyfish-ui/issues"
+  },
+  "homepage": "https://github.com/Jellyfish-lsef/jellyfish-ui#readme"
+}
