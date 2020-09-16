@@ -1,9 +1,1 @@
-node_modules
-builds
 .DS_Store
-*.app/
-*.exe.dll
-config.jdx
-*.dat
-SirHurt.dll
-SirHurtInjector.dll
