@@ -68,7 +68,7 @@
                     <label for="homo">I am a homosexual</label>
                     <input id="alwaysOnTop" onchange="jellyfish.setTopmost(this.checked)" type="checkbox" style="margin-left: 8px;">
                     <label for="alwaysOnTop">Stay on top?</label>
-                    <input type="text" class="textbox" placeholder="Theme Repo" value="jellyfish/jellyfish-ui" id="theme"></input> <button class="simpleButton" onclick="jellyfish.setTheme(document.querySelector('input#theme').value)">Set Theme</button>
+                    <input type="text" class="textbox" placeholder="Theme Repo" value="jellyfish-lsef/jellyfish-ui" id="theme"></input> <button class="simpleButton" onclick="jellyfish.setTheme(document.querySelector('input#theme').value)">Set Theme</button>
                     <div id="exploitSwitch">
                         <h3>Injector Selection</h3>
                         <div id="exploits">
@@ -117,5 +117,6 @@
         <script src="js/customization.js"></script>
         <script src="js/jellyapi.js"></script>
         <script src="js/login.js"></script>
+        <script>window.addEventListener("load",jellyfish.init)</script>
     </body>
 </html>

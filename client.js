@@ -14,7 +14,7 @@ window.onhashchange = function(h) {
     if (hash == "#editor") { mainContainer.style.left = "0px" }
     if (hash == "#settings") { mainContainer.style.left = "-100vw" }
     if (hash == "#scripts") { mainContainer.style.left = "-200vw"; isLoading = false; scriptsContainer.innerHTML = ""; jellyfish.startCrawl() }
-    if (hash == "#scripthub") { mainContainer.style.left = "-200vw"; jellyfish.startRemoteCrawl() }
+    if (hash == "#scripthub") { mainContainer.style.left = "-200vw";isLoading = false; scriptsContainer.innerHTML = ""; jellyfish.startRemoteCrawl() }
     document.querySelector("a.selected").classList.remove("selected")
     document.querySelector(`a[href="${hash}"]`).classList.add("selected")
 }
