@@ -68,15 +68,10 @@
                     <label for="homo">I am a homosexual</label>
                     <input id="alwaysOnTop" onchange="jellyfish.setTopmost(this.checked)" type="checkbox" style="margin-left: 8px;">
                     <label for="alwaysOnTop">Stay on top?</label>
+                    <input type="text" class="textbox" placeholder="Theme Repo" value="jellyfish/jellyfish-ui" id="theme"></input> <button class="simpleButton" onclick="jellyfish.setTheme(document.querySelector('input#theme').value)">Set Theme</button>
                     <div id="exploitSwitch">
                         <h3>Injector Selection</h3>
-                        <div id="winExploits">
-                            <button id="exploit-synx" class="simpleButton" style="position: initial;width: auto;padding-left: 16px;padding-right: 16px;" onclick='jellyfish.setExploit("synx")'>Synapse X</button>
-                            <button id="exploit-sirhurt" class="simpleButton" style="position: initial;width: auto;padding-left: 16px;padding-right: 16px;" onclick='jellyfish.setExploit("sirhurt")'>SirHurt</button>
-                        </div>
-                        <div id="macExploits">
-                            <button id="exploit-calamari" class="simpleButton" style="position: initial;width: auto;padding-left: 16px;padding-right: 16px;" onclick='jellyfish.setExploit("calamari")'>Calamari-M</button>
-                            <button id="exploit-fluxus" class="simpleButton" style="position: initial;width: auto;padding-left: 16px;padding-right: 16px;" onclick='jellyfish.setExploit("fluxus")'>Fluxus</button>
+                        <div id="exploits">
                         </div>
                     </div>
                     <div id="calamariOptions">
@@ -86,8 +81,6 @@
                     </div>
                     <script>
                         document.querySelector("#calamariOptions").style.display = jellyfish.platform != "darwin" ? "none" : "block"
-                        document.querySelector("#macExploits").style.display = jellyfish.platform != "darwin" ? "none" : "block"
-                        document.querySelector("#winExploits").style.display = jellyfish.platform != "win32" ? "none" : "block"
                     </script>
                     <div class="attribution"><hr>made by <a target="_blank" class="link" href="https://thelmgn.com">theLMGN</a> in 2020.<br>check <a target="_blank" class="link" href="https://jellyfish.thelmgn.com/">https://jellyfish.thelmgn.com/</a> for updates and support
                         </div>

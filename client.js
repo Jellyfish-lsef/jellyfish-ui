@@ -54,3 +54,12 @@ function apiDisconnected() {
     document.querySelector(`a[href="#scripthub"]`).style.display = "none"
 }
 jellyfish.getScript("./package.json",function(b,a) {v = JSON.parse(a).version })
+
+function gotSupportedExploits() {
+    for (var e of jellyfish.supportedExploits) {
+        document.querySelector("#exploits").innerHTML += `
+        <button id="exploit-${e}" class="simpleButton" style="position: initial;width: auto;padding-left: 16px;padding-right: 16px;" onclick='jellyfish.setExploit(${JSON.stringify(e)})'>
+            ${jellyfish.exploits[e] || e}
+        </button>`
+    }
+}

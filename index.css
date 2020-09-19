@@ -228,7 +228,7 @@ a {
 .fullwidth {
     width:100%;
 }
-.simpleButton {
+.simpleButton,input#theme {
     background: var(--button-background);
     color: var(--button-text);
     border-radius: 5px;
