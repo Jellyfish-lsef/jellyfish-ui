@@ -53,7 +53,7 @@ function apiConnected() {
 function apiDisconnected() {
     document.querySelector(`a[href="#scripthub"]`).style.display = "none"
 }
-jellyfish.getScript("./package.json",function(b,a) {v = JSON.parse(a).version })
+fetch("package.json").then((f) => {f.json().then((j) => {v = j.version;gotExploit()})})
 
 function gotSupportedExploits() {
     for (var e of jellyfish.supportedExploits) {

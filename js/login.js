@@ -1,13 +1,13 @@
 
 
-function showLogin(a) {
+function showLogin(username,password) {
     try {
-        document.querySelector("#loginUsername").value = a[0]
+        document.querySelector("#loginUsername").value = username
     } catch(e) {
         console.error(e)
     }
     try {
-        document.querySelector("#loginPassword").value = a[1]
+        document.querySelector("#loginPassword").value = password
     } catch(e) {
         console.error(e)
     }
