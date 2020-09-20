@@ -60,12 +60,7 @@ require("electron").remote.systemPreferences.subscribeNotification('AppleInterfa
 require("electron").remote.systemPreferences.subscribeNotification('AppleAquaColorVariantChanged', changeAccent);
 require("electron").remote.systemPreferences.subscribeNotification('AppleColorPreferencesChangedNotification', changeAccent);
 **/
-var head  = document.head;
-var link  = document.createElement('link');
-link.rel  = 'stylesheet';
-link.type = 'text/css';
-link.href = path.join(JELLYFISH_DATA_DIR,"Config","theme.css");
-head.appendChild(link);
+
 
 
 
@@ -73,11 +68,7 @@ head.appendChild(link);
 var chcolor = 0
 function changeColor(hue) {
     var s = `body, body *, body > * {
-        --accent-bright: hsl(${hue},87%,48%);
-        --accent-dark: hsl(${hue},94%,33%);
-        --accent-verydark: hsl(${hue},88%,33%);
-        --background-main: #222;
-        --text-main: #fff;
+        --accent-hue: ${hue}
     }`
     var elem = document.querySelector("#accentColorChange")
     if (!elem) {
@@ -102,16 +93,13 @@ function stopChangingColor(t) {
 
 function homomode() {
     var hs = document.querySelector("#hueSlider")
-    document.querySelector("#homo").disabled = true
-    hs.disabled = true
-    document.querySelector(".topBarBrand").innerText = "Gayllyfish"
-    var i = 0
-    setInterval(function() {
-        i += 2
-        if (i > 359) { i = 0 }
-        changeColor(i)
-        
-    },30)
+    if (document.querySelector("#homo").checked) {
+        document.querySelector(".topBarBrand").innerText = "Gayllyfish"
+        document.body.classList.add("gay")
+    } else {
+        document.querySelector(".topBarBrand").innerText = "Jellyfish"
+        document.body.classList.remove("gay")
+    }
 
 }
 

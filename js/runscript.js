@@ -1,29 +1,29 @@
 function inject() {
     injectBtn.disabled = true
     injectBtn.innerText = "Loading"
-    ipcRenderer.send("inject-button-click",localStorage.getItem("usesAlternativeElevation") == "true")
+    jellyfish.inject(localStorage.getItem("usesAlternativeElevation") == "true")
 }
-ipcRenderer.on('set-inject-btn-text', (event, arg) => {
-    injectBtn.innerText = arg
+function injectionStatusChange(text) {
+    injectBtn.innerText = text
     injectBtn.disabled = true
-})
+}
 
-ipcRenderer.on('enable-inject-btn', (event, arg) => {
+function enableInjectBtn() {
     injectBtn.innerText = "Inject"
     injectBtn.disabled = undefined
-})
-ipcRenderer.on("script-ran",() => {
+}
+function onScriptRun() {
     console.log("hahaha icon goes spinspinspin")
     runFab.classList.remove("spin")
     void runFab.offsetWidth; // forces it to be re-rendered? idk js is weird sometimes
     runFab.classList.add("spin")
-})
+}
 runFab.onclick = function() {
-    ipcRenderer.send("run-script",mainEditor.getValue())
+    jellyfish.runScript(mainEditor.getValue())
 }
 
 saveFab.onclick = function() {
-    ipcRenderer.send("save-script",mainEditor.getValue())
+    jellyfish.saveScript(mainEditor.getValue())
 }
 
 function editScript(script) {
@@ -31,7 +31,3 @@ function editScript(script) {
     location.hash = "#editor"
 }
 
-function runScript(a) {
-    console.log(a)
-    ipcRenderer.send("run-script",a)
-}

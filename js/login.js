@@ -19,14 +19,6 @@ function login() {
     if (document.querySelector("#loginUsername").value == "trial") {
         return alert("Trial login is no longer available.")
     }
-    ipcRenderer.send("check-creds",[document.querySelector("#loginUsername").value,document.querySelector("#loginPassword").value])
+    jellyfish.attemptLogin(document.querySelector("#loginUsername").value,document.querySelector("#loginPassword").value)
 }
-
-ipcRenderer.on('request-login', showLogin)
-ipcRenderer.on('login-success',() => {document.body.classList.remove("loggingIn")})
-window.onkeydown = function(evt) {
-    // disable zooming
-    if ((evt.code == "Minus" || evt.code == "Equal") && (evt.ctrlKey || evt.metaKey)) {evt.preventDefault()}
-    if (evt.code == "F12") require('electron').remote.getCurrentWindow().openDevTools()
-    webFrame.setZoomFactor(1)
-}
+function loginSuccess() {document.body.classList.remove("loggingIn") }

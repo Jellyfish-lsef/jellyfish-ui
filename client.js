@@ -1,9 +1,4 @@
-const webFrame =  require('electron').webFrame
-const dialog =  require('electron').remote.dialog
 
-const fs = require("fs")
-const os = require("os")
-const { ipcRenderer } = require('electron')
 
 const mainContainer = document.querySelector("#mainContainer")
 const injectBtn = document.querySelector("#topBarInject")
@@ -18,8 +13,8 @@ window.onhashchange = function(h) {
     var hash = location.hash
     if (hash == "#editor") { mainContainer.style.left = "0px" }
     if (hash == "#settings") { mainContainer.style.left = "-100vw" }
-    if (hash == "#scripts") { mainContainer.style.left = "-200vw"; startCrawl() }
-    if (hash == "#scripthub") { mainContainer.style.left = "-200vw"; startRemoteCrawl() }
+    if (hash == "#scripts") { mainContainer.style.left = "-200vw"; isLoading = false; scriptsContainer.innerHTML = ""; jellyfish.startCrawl() }
+    if (hash == "#scripthub") { mainContainer.style.left = "-200vw";isLoading = false; scriptsContainer.innerHTML = ""; jellyfish.startRemoteCrawl() }
     document.querySelector("a.selected").classList.remove("selected")
     document.querySelector(`a[href="${hash}"]`).classList.add("selected")
 }
@@ -31,7 +26,7 @@ if (location.hash.length > 1) { window.onhashchange()}
 var isLoading = true
 
 
-var lastPingInterval = 0
+var lastPingInterval = 0/**
 ipcRenderer.on('http-request',(e,data) => {
     if (data.messageType == "ping") {
         clearTimeout(lastPingInterval)
@@ -44,18 +39,27 @@ ipcRenderer.on('http-request',(e,data) => {
             document.title = "Jellyfish"
         },2000)
     }
-})
+})*/
 
-const exploits = {
-    null: "nullExploit",
-    calamari: "Calamari-M",
-    sirhurt: "SirHurt",
-    synx: "Synapse X",
-    fluxus: "Fluxus"
+var v = "0.0.0"
+function gotExploit() {
+    document.title = "Jellyfish " + jellyfish.version + " for " + jellyfish.exploitName + " | JellyfishUI " + v
 }
-
-ipcRenderer.on('set-exploit',(e,data) => {
-    exploit = data
-    document.title = "Jellyfish for " + exploits[data]
-})
 document.querySelector("#alternativeElevation").checked = localStorage.getItem("usesAlternativeElevation") == "true"
+
+function apiConnected() {
+    document.querySelector(`a[href="#scripthub"]`).style.display = "inline-block"
+}
+function apiDisconnected() {
+    document.querySelector(`a[href="#scripthub"]`).style.display = "none"
+}
+jellyfish.getScript("./package.json",function(b,a) {v = JSON.parse(a).version })
+
+function gotSupportedExploits() {
+    for (var e of jellyfish.supportedExploits) {
+        document.querySelector("#exploits").innerHTML += `
+        <button id="exploit-${e}" class="simpleButton" style="position: initial;width: auto;padding-left: 16px;padding-right: 16px;" onclick='jellyfish.setExploit(${JSON.stringify(e)})'>
+            ${jellyfish.exploits[e] || e}
+        </button>`
+    }
+}
