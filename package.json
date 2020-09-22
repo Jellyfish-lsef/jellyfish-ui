@@ -2,7 +2,7 @@
   "name": "jellyfish-ui",
   "description": "The default UI for Jellyfish.",
   "author": "theLMGN",
-  "version": "2.0.0-beta2",
+  "version": "2.0.0",
   "main": "index.html",
   "keywords": [ "jellyfish-ui" ],
   
